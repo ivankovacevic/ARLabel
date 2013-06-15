@@ -31,7 +31,6 @@
 {
 	BOOL initialized;
 	BOOL frameIsSetForTheFirstTime;
-	CALayer *originalLayer;
 }
 
 @end
