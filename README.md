@@ -1,4 +1,4 @@
-ARLabel - Auto Resizing Label
+ARLabel - Autoresizing Label
 =============================
 
-Subclassed version of UILabel that automatically adjusts label font to fit its frame, also during animation.
+Subclassed version of UILabel that automatically adjusts label font size to fit its frame, specifically designed to work good with animations.
