@@ -44,15 +44,15 @@
 	initialized = NO;
 	frameIsSetForTheFirstTime = NO;
 	
-    self = [super initWithFrame:frame];
-    if (self)
+	self = [super initWithFrame:frame];
+	if (self)
 	{
-        // Initialization code
+		// Initialization code
 		_autoAdjustFontSizeWithTextChange = NO;
 		
 		initialized = YES;
-    }
-    return self;
+	}
+	return self;
 }
 
 - (void)setEnlargedSize:(CGSize)enlargedSize
