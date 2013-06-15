@@ -61,9 +61,9 @@
 	{
 		// This code can be potentially called within an animation block. Animating these changes would
 		// mess everything up. Therefor we apply the following "trick" to exclude these changes from
-		// being animated. They are executed instantly...
+		// being animated. They are executed instantaneously...
 		
-		[CATransaction begin]; // We enclose this in a CATransacion block to be able set setDisableActions
+		[CATransaction begin]; // We enclose this in a CATransacion block to be able to set setDisableActions
 		[CATransaction setDisableActions:YES]; // <-- Disable potential animation of the following changes
 		
 		_enlargedSize = enlargedSize;
@@ -157,7 +157,7 @@
 - (void)setFontSizeThatFits
 {
 	// The hardcoded values here are derived from experimentation and the purpose of them is to reduce the font
-	// by a small amout, beacause otherwise the text would be, in some cases, drawn beyond label bounds.
+	// by a small amout, because otherwise the text would be, in some cases, drawn beyond label boundaries.
 	
 	CGFloat maxFontSizeCorrection;
 	if (self.bounds.size.height > 8.0)
