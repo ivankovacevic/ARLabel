@@ -7,7 +7,7 @@ Ever had one of the following problems with UILabel?
 - UILabel adjustsFontSizeToFitWidth does not work as expected
 - Could not animate font size change
 
-That is where ARLabel comes in. Forget font size altogether! ARLabel works automatically by setting its font size to fit its frame. So working with ARLabel is more like working with plain UIView. Just set the frame to desired size and forget all the rest. You want animated font size change? Just set a different frame inside an UIView animation block.
+That is where ARLabel comes in. Forget font size altogether! ARLabel works automatically by setting its font size to fit its frame. So working with ARLabel is more like working with plain UIView. Just set the frame to desired size and forget everything else. You want animated font size change? Just set a different frame inside an UIView animation block.
 ![ScreenShot](https://raw.github.com/ivankovacevic/ARLabel/master/screenshot.png)
 
 ## How does it work? ##
