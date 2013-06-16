@@ -5,6 +5,7 @@
 //  Created by Ivan Kovacevic on 5/15/13.
 //  Copyright (c) 2013 Ivan Kovacevic, e-mail: ivan.kovacevic@gmail.com
 //
+//  Hosted at: https://github.com/ivankovacevic/ARLabel
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
