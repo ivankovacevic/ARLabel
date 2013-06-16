@@ -8,7 +8,7 @@ Subclassed version of UILabel that automatically adjusts label font size to fit 
 
 ## Requirements ##
 
-Include QuartzCore.framework under "Link Binary With Libraries" in your project settings.
+Include **QuartzCore.framework** under **"Link Binary With Libraries"** in your project settings.
 
 
 ## Example usage ##
@@ -20,12 +20,12 @@ testLabel.enlargedSize = CGSizeMake(200, 100);
 
 [self.view addSubview:testLabel];
 
-UIView animateWithDuration:3.0
-                     delay:5.0
-  					       options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
-					      animations:^{
-						                   testLabel.frame = CGRectMake(60, 200, 200, 100);
-					                  }
-					      completion:nil];
+[UIView animateWithDuration:3.0
+                      delay:5.0
+                    options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse
+                 animations:^{
+                                 testLabel.frame = CGRectMake(60, 200, 200, 100);
+                             }
+                 completion:nil];
 ```
 
