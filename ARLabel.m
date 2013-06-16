@@ -60,7 +60,7 @@
 	if (!CGSizeEqualToSize(enlargedSize, _enlargedSize))
 	{
 		// This code can be potentially called within an animation block. Animating these changes would
-		// mess everything up. Therefor we apply the following "trick" to exclude these changes from
+		// mess everything up. Therefore we apply the following "trick" to exclude these changes from
 		// being animated. They are executed instantaneously...
 		
 		[CATransaction begin]; // We enclose this in a CATransacion block to be able to set setDisableActions
@@ -125,7 +125,7 @@
 				// would produce zero again. However, bounds property stays the same and is not affected
 				// with transformations as the frame property. The reason for this is that frame is,
 				// as mentioned in the previous comment, a calculated property. So changing the transform
-				// changes the frame, but not bounds. Therefor using bounds here resolves the issue.
+				// changes the frame, but not bounds. Therefore using bounds here resolves the issue.
 				
 				scaleX = frame.size.width / self.bounds.size.width;;
 				scaleY = frame.size.height / self.bounds.size.height;;
