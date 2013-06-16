@@ -88,16 +88,28 @@
 {
 	if (!CGSizeEqualToSize(frame.size, self.frame.size))
 	{
-		// Lets check if it is the first time the frame is set to some concrete values. If it is
-		// not, we set the frame the reqular way. If it is, we only apply a transformation to the
-		// frame. For example checking only if frame is zero here (and not using additional BOOL var)
-		// is not enough because if the label is initialized with [[... alloc] initWithFrame: ...];
-		// then the super class implementation has already set the bounds(frame property is actually
-		// a combination of position, bounds and anchorPoint of the underlying layer)
-		// which corresponds to size, however the origin is left unset(Center is at 0,0 and the origin
-		// at negative values). The super implementation then calls this setFrame to complete
-		// setting the frame. So to correctly detect that, we use here a BOOL variable initialized,
-		// which is set to YES at the end of our init method
+		// There are two scenarios here:
+		//  1. The label has already gonne through init method and the frame was already set
+		//     either during the initialization with initWithFrame:, or later by directly setting
+		//     the frame property.
+		//  2. The label is still in phase of initialization
+		//
+		// If it is the later (2.) than we allow the frame to be set in the usual way(remeber this
+		// method has overriden the default UILabel setFrame: method) by simply calling setFrame:
+		// on super.
+		// However once that is done, each subsequent call to setFrame: will not actually set the
+		// frame, but will instead only apply a transform to the whole layer/view. This enables
+		// animations as one would expect(font size change is animated).
+		//
+		// Few things to note here: I use BOOL variables to check state here. One would maybe
+		// think that it would be enough to check, for example, if current frame is CGRectZero.
+		// However when initialization is done with initWithFrame: method, once setFrame: is called
+		// the bounds are already set, that is, the size part of the frame is already set. The origin
+		// is not. That is so because the frame property is actually a calculated property of position,
+		// bounds, anchorPoint and transformation of the underlying layer. The super class implementation
+		// of initWithFrame: sets the bounds part. The origin is not zero at that moment, but at negative
+		// values of half the size, because center is actually at 0,0.
+		
 		if (initialized && frameIsSetForTheFirstTime)
 		{
 			CGFloat scaleX = frame.size.width / self.frame.size.width;
@@ -142,8 +154,7 @@
 
 - (void)setText:(NSString *)text
 {
-	
-	if (self.text == nil || self.autoAdjustFontSizeWithTextChange)
+	if (self.text == nil || _autoAdjustFontSizeWithTextChange)
 	{
 		super.text = text;
 		[self setFontSizeThatFits];
@@ -153,8 +164,17 @@
 }
 
 
+- (void)setFont:(UIFont *)font
+{
+	super.font = font;
+	[self setFontSizeThatFits];
+}
+
+
 - (void)setFontSizeThatFits
 {
+	// This method is here to solve problems that the built-in UILabel adjustsFontSizeToFitWidth has. For
+	// example fitting size also by height and centering by height(this is an accidental fix)...
 	// The hardcoded values here are derived from experimentation and the purpose of them is to reduce the font
 	// by a small amout, because otherwise the text would be, in some cases, drawn beyond label boundaries.
 	
@@ -166,7 +186,7 @@
 	
 	CGFloat maxFontSize = self.bounds.size.height - maxFontSizeCorrection;
 	CGFloat fontSizeThatFits;
-	NSString *templateText = (self.textForFontSizeCalculation == nil) ? self.text : self.textForFontSizeCalculation;
+	NSString *templateText = (_textForFontSizeCalculation == nil) ? self.text : _textForFontSizeCalculation;
 	
 	[templateText sizeWithFont:[self.font fontWithSize:maxFontSize]
 				   minFontSize:1.0
@@ -174,7 +194,7 @@
 					  forWidth:self.bounds.size.width
 				 lineBreakMode:NSLineBreakByTruncatingTail];
 	
-	self.font = [self.font fontWithSize:fontSizeThatFits];
+	super.font = [self.font fontWithSize:fontSizeThatFits];
 }
 
 @end
