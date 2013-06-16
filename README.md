@@ -16,7 +16,7 @@ The core funcionallity revolves around calling the CGAffineTransformScale functi
 
 Beside that there is a bunch of other small tricks included in the implementation that handle all the weird border cases
 
-## Whats with all the comments?! ##
+## What's with all the comments?! ##
 
 Well I probably did exagerate a bit with the comments in the files. However I did not want to wonder again why I did something the way I did, that's why I wrote every detail down. The comments in the .h file can help you understand all the extra properties that you can use.
 
