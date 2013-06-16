@@ -123,9 +123,9 @@
 				// tried to resize it back it would not work because current affine transform is zero.
 				// The same goes for current frame sizes that are zero, so multiplying anything with zero
 				// would produce zero again. However, bounds property stays the same and is not affected
-				// with transformations as the frame property. The reason for this is that frame is
-				// a calculated property from different other values and obviously transformation is one
-				// of them. So using bounds here resolves the issue
+				// with transformations as the frame property. The reason for this is that frame is,
+				// as mentioned in the previous comment, a calculated property. So changing the transform
+				// changes the frame, but not bounds. So using bounds here resolves the issue.
 				
 				scaleX = frame.size.width / self.bounds.size.width;;
 				scaleY = frame.size.height / self.bounds.size.height;;
@@ -190,10 +190,10 @@
 	NSString *templateText = (_textForFontSizeCalculation == nil) ? self.text : _textForFontSizeCalculation;
 	
 	[templateText sizeWithFont:[self.font fontWithSize:maxFontSize]
-				   minFontSize:1.0
-				actualFontSize:&fontSizeThatFits
-					  forWidth:self.bounds.size.width
-				 lineBreakMode:NSLineBreakByTruncatingTail];
+	               minFontSize:1.0
+	            actualFontSize:&fontSizeThatFits
+	                  forWidth:self.bounds.size.width
+	             lineBreakMode:NSLineBreakByTruncatingTail];
 	
 	super.font = [self.font fontWithSize:fontSizeThatFits];
 }
