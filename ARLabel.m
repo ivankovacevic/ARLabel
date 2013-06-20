@@ -127,8 +127,8 @@
 				// as mentioned in the previous comment, a calculated property. So changing the transform
 				// changes the frame, but not bounds. Therefore using bounds here resolves the issue.
 				
-				scaleX = frame.size.width / self.bounds.size.width;;
-				scaleY = frame.size.height / self.bounds.size.height;;
+				scaleX = frame.size.width / self.bounds.size.width;
+				scaleY = frame.size.height / self.bounds.size.height;
 				currentTransform = CGAffineTransformIdentity;
 			}
 			
