@@ -95,7 +95,7 @@
 		//     the frame property.
 		//  2. The label is still in phase of initialization
 		//
-		// If it is the later(2.), then we allow the frame to be set in the usual way(remeber this
+		// If it is the later(2.), then we allow the frame to be set in the usual way(remember this
 		// method has overriden the default UILabel setFrame: method) by simply calling setFrame:
 		// on super.
 		// However once that is done, each subsequent call to setFrame: will not actually set the
