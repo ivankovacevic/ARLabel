@@ -32,7 +32,7 @@
 
 // Note: The built-in UILabel adjustsFontSizeToFitWidth has its problems, that is
 //       why ARLabel uses its own logic to apply the font size. If you want the
-//       same functionallity also when the text is changing then remeber to set
+//       same functionality also when the text is changing then remeber to set
 //       the following property to YES.
 
 // Set this property to YES to automatically adjust the font size of the text to fit
