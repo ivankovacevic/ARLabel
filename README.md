@@ -13,7 +13,7 @@ That is where ARLabel comes in. Forget font size altogether! ARLabel works autom
 
 ## How does it work? ##
 
-The core funcionallity revolves around calling the CGAffineTransformScale function, which transforms the size of underlying layer altogether. Enlarging would however produce blurry text that's why there is a nice property called **enlargedSize** which you can set upfront to the expected size that you are going to enlarge your label. What happens in the background is that the label is immediately created with that size and transformed(shrunk) to current frame size. Then when you enlarge it, it is actually transformed back to its original state/size. It's a sort of reversed logic :)
+The core functionality revolves around calling the CGAffineTransformScale function, which transforms the size of underlying layer altogether. Enlarging would however produce blurry text that's why there is a nice property called **enlargedSize** which you can set upfront to the expected size that you are going to enlarge your label. What happens in the background is that the label is immediately created with that size and transformed(shrunk) to current frame size. Then when you enlarge it, it is actually transformed back to its original state/size. It's a sort of reversed logic :)
 
 Beside that there is a bunch of other small tricks included in the implementation that handle all the weird border cases
 
