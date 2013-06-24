@@ -43,10 +43,14 @@
 
 // This property allows you to set a sort of template text to calculate the font
 // size by, but which will never be displayed on the label. This is useful if you
-// use fonts that do not have fixed and same letter widths, but you would like that
-// all text that is going to be displayed on the label has the same font size.
-// For example "05 Sep 2013" may not have the same width as "11 Jul 2013" so you may
-// set this property to "88 mmm 8888" which has larger width than both of the two...
+// don't want to use the above autoAdjustFontSizeWithTextChange property but still
+// want that text with different lengths fits the label. For example if you are
+// going to display different dates inside the same label "24 June 2013" will
+// obviously not have the same width as "24 September 2013", so you can set this
+// property to the text with the greatest length that you are going to encounter
+// and the font will be adjusted to that one. This is also handy for text with
+// the same length, but that will still have different width because the font used
+// is not a monospaced(fixed-width) font.
 @property (strong, nonatomic) NSString *textForFontSizeCalculation;
 
 // This property is responsible for better and clear looking text in case you are
