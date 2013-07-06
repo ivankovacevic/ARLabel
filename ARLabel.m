@@ -177,7 +177,7 @@
 	// This method is here to solve problems that the built-in UILabel adjustsFontSizeToFitWidth has. For
 	// example fitting size also by height and centering by height(this is an accidental fix)...
 	// The hardcoded values here are derived from experimentation and the purpose of them is to reduce the font
-	// by a small amout, because otherwise the text would be, in some cases, drawn beyond label boundaries.
+	// by a small amount, because otherwise the text would be, in some cases, drawn beyond label boundaries.
 	
 	CGFloat maxFontSizeCorrection;
 	if (self.bounds.size.height > 8.0)
